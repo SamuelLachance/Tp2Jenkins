@@ -33,7 +33,7 @@
     authorized_key:
      user: charlie
      state: present
-     key: https://github.com/SamuelLachance/Tp2Jenkins/blob/master/Public.keys
+     key: https://github.com/SamuelLachance/Tp2Jenkins/blob/master/id_rsa.pub
 - hosts: all
   roles:
      - ansible-php-fpm
