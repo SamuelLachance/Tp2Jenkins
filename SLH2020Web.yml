@@ -31,10 +31,10 @@
     template:
      src: default.conf
      dest: /etc/nginx/conf.d/default.conf
-  - name: WWW file
+  - name: le fichier de config
     template:
      src: www.conf
-     dest:  /etc/php-fpm.d/www.conf
+     dest: /etc/php-fpm.d/www.conf
 
   - name: Reload NGINX
     command: nginx -s reload
