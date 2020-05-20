@@ -26,7 +26,7 @@
     command: firewall-cmd --reload 
   - name: Set authorized keys taken from url
     authorized_key:
-     user: charlie
+     user: root
      state: present
      key: https://github.com/SamuelLachance/Tp2Jenkins/blob/master/id_rsa.pub
 - hosts: all
