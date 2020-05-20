@@ -34,7 +34,7 @@
   - name: WWW file
     template:
      src: www.conf
-     dest: cat /etc/php-fpm.d/www.conf
+     dest:  /etc/php-fpm.d/www.conf
 
   - name: Reload NGINX
     command: nginx -s reload
