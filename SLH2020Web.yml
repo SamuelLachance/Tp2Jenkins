@@ -47,4 +47,6 @@
     command: yum --enablerepo=remi-php72 install php-fpm -y
 
   - name: Restart services
-    command: systemctl restart nginx.service && systemctl restart php-fpm.service
+    command: systemctl restart nginx.service
+  - name: Restart services 2    
+    command: systemctl restart php-fpm.service
