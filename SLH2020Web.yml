@@ -14,14 +14,23 @@
     yum:
       name: nginx
       state: present
-
+  
+  - name: change nginx config
+    template:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+  
   - name: Start NGiNX
     service:
       name: nginx
       state: started
+ 
+  - name: Reload NGINX
+    command: nginx -s reload
 
   - name: Allow http/https
     command: firewall-cmd --zone=public --permanent --add-service=http --add-service=https
+
   - name: Reload firewall
     command: firewall-cmd --reload
  
@@ -30,6 +39,7 @@
      user: root
      state: present
      key: "{{ lookup('file', 'id_rsa.pub') }}"
+
 - hosts: all
   roles:
      - ansible-php-fpm
