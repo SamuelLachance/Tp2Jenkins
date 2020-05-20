@@ -6,13 +6,17 @@
 
   tasks:
   - name: Add epel-release repo
-    command: yum install epel-release -y && rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && rpm -Uvh http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+    command: yum install epel-release -y 
+  - name: rpm1
+    command: rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+  - name: rpm2
+    command: rpm -Uvh http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 
   - name: Install php 7
     command: yum --enablerepo=remi-php72 install php -y
 
   - name: install required modules
-    command: yum --enablerepo=remi-php72 search php && yum --enablerepo=remi-php72 install php-mysql php-xml \ php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt -y
+    command: yum --enablerepo=remi-php72 install php-mysql php-xml \ php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt -y
  
   - name: Install nginx
     yum:
@@ -41,5 +45,6 @@
  
   - name: Setup PHP-FPM
     command: yum --enablerepo=remi-php72 install php-fpm -y
+
   - name: Restart services
     command: systemctl restart nginx.service && systemctl restart php-fpm.service
