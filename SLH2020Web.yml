@@ -23,12 +23,13 @@
   - name: Allow http/https
     command: firewall-cmd --zone=public --permanent --add-service=http --add-service=https
   - name: Reload firewall
-    command: firewall-cmd --reload 
+    command: firewall-cmd --reload
+ 
   - name: Set authorized keys taken from url
     authorized_key:
      user: root
      state: present
-     key: https://github.com/SamuelLachance/Tp2Jenkins/blob/master/id_rsa.pub
+     key: "{{ lookup('file', 'id_rsa.pub') }}"
 - hosts: all
   roles:
      - ansible-php-fpm
