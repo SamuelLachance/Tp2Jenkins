@@ -27,7 +27,15 @@
     service:
       name: nginx
       state: started
- 
+  - name: Default file virtual
+    template:
+     src: default.conf
+     dest: /etc/nginx/conf.d/default.conf
+  - name: WWW file
+    template:
+     src: www.conf
+     dest: cat /etc/php-fpm.d/www.conf
+
   - name: Reload NGINX
     command: nginx -s reload
 
